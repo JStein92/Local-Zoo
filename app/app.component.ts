@@ -10,7 +10,7 @@ import {Animal} from './animal';
 
   <div class = "container">
     <animal-list [animalList] = "masterAnimalList" (showNewAnimalFormSender)="showNewAnimalForm()"
-    (editAnimalSender)="editAnimal($event)"></animal-list>
+    (editAnimalSender)="editAnimal($event)" (removeAnimalSender) = "removeAnimal($event)"></animal-list>
   </div>
 
   <new-animal (newAnimalSender)="addAnimal($event)" [showNewAnimalForm] ="showNewAnimalFormBool" (closeNewAnimalFormSender) = "showNewAnimalForm()"> </new-animal>
@@ -29,6 +29,13 @@ export class AppComponent {
   }
   closeEditAnimalForm(){
       this.selectedAnimal = null;
+  }
+
+  removeAnimal(animal){
+    this.masterAnimalList.splice(animal.id, 1);
+    for(let i = 0; i <this.masterAnimalList.length; i++){
+      this.masterAnimalList[i].id = i;
+    }
   }
 
 

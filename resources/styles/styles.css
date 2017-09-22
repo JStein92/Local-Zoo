@@ -18,11 +18,14 @@ text-align: center;
   margin: 20px;
   background-color:#e0e0e0;
   width: 30%;
-
   margin-left: 35%;
 }
 #selects{
   font-size: 1.3em;
+}
+.removeAnimalBtn{
+  margin-top: 10px;
+  float: right;
 }
 #addAnimalBtn{
   float: right;

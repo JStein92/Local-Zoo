@@ -1,3 +1,5 @@
+let globalId : number = 0;
+
 export class Animal {
 
   constructor(
@@ -12,4 +14,6 @@ export class Animal {
     public dislikes: string[],
     public image: string){ }
 
+    public id : number = globalId++;
+    
   }

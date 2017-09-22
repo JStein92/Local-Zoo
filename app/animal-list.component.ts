@@ -50,7 +50,7 @@ import { AgePipe } from './age-pipe.pipe';
   <br>
 
   <div *ngFor="let animal of animalList | agePipe:filterByAge | dietPipe:filterByDiet" [class]="getPanelColor(animal)">
-    <div class="panel-heading">{{animal.name}}</div>
+    <div class="panel-heading">{{animal.name}} <button (click) = "removeAnimal(animal)" class="btn btn-danger removeAnimalBtn">X</button></div>
     <div [class]="getPanelBodyColor(animal)">
 
     <div class = 'animalImageWrapper'>
@@ -91,9 +91,14 @@ export class AnimalListComponent {
   @Input() animalList: Animal[];
   @Output() showNewAnimalFormSender = new EventEmitter();
   @Output() editAnimalSender = new EventEmitter();
-
+  @Output() removeAnimalSender = new EventEmitter();
+  
   filterByAge : string = "allAges";
   filterByDiet : string = "allDiets";
+
+  removeAnimal(animal : Animal){
+    this.removeAnimalSender.emit(animal);
+  }
 
   onAgeChange(optionFromMenu){
     this.filterByAge = optionFromMenu;
