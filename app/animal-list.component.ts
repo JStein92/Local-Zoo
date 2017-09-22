@@ -6,6 +6,31 @@ import { AgePipe } from './age-pipe.pipe';
   selector: 'animal-list',
   template: `
 
+  <div class = "centered">
+    <div id = "key">
+      <label>Color Key</label>
+      <div class = 'row'>
+        <div class = 'col-md-4'>
+          <div class = "redBox">
+          </div>
+          Carnivore
+        </div>
+        <div class = 'col-md-4'>
+          <div class = "yellowBox">
+
+          </div>
+           Omnivore
+        </div>
+        <div class = 'col-md-4'>
+          <div class = "greenBox">
+          </div>
+          Herbavore
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <button (click) = "showNewAnimalForm()">Add new Animal</button>
 
   <select (change)="onAgeChange($event.target.value)">
@@ -14,9 +39,13 @@ import { AgePipe } from './age-pipe.pipe';
     <option value="mature">Mature</option>
   </select>
 
-  <div class="panel panel-info" *ngFor="let animal of animalList | agePipe:filterByAge">
+  <div *ngFor="let animal of animalList | agePipe:filterByAge" [class]="getPanelColor(animal)">
     <div class="panel-heading">{{animal.name}}</div>
-    <div class="panel-body">
+    <div [class]="getPanelBodyColor(animal)">
+
+    <div class = 'animalImageWrapper'>
+      <img src = '{{animal.image}}' class ='animalImage'>
+    </div>
 
     <ul class="list-group">
       <div class="list-group-item">{{animal.species}} <button (click) = "editAnimal(animal)">Edit</button></div>
@@ -69,6 +98,26 @@ export class AnimalListComponent {
 
   onPintsRemainingChange(optionFromMenu) {
     this.filterByAge = optionFromMenu;
+  }
+
+  getPanelColor(animal){
+    if (animal.diet==="Carnivore"){
+      return ("panel panel-danger")
+    } else if (animal.diet==="Herbivore"){
+      return ("panel panel-success")
+    } else {
+      return ("panel panel-warning")
+    }
+  }
+
+  getPanelBodyColor(animal){
+    if (animal.diet==="Carnivore"){
+      return ("panel-body red")
+    } else if (animal.diet==="Herbivore"){
+      return ("panel-body green")
+    } else {
+      return ("panel-body yellow")
+    }
   }
 
 }

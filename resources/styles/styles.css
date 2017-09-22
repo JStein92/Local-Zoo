@@ -2,9 +2,57 @@
   margin: 5px;
   margin-left: 30px;
 }
+body{
+  font-family: 'Domine', serif;
+  background-color: #f4f4f4;
+}
 
 .list-group label{
   margin: 10px;
+}
+.centered{
+text-align: center;
+}
+#key{
+  padding: 20px;
+  margin: 20px;
+  background-color:#e0e0e0;
+  width: 30%;
+
+  margin-left: 35%;
+}
+.green{
+    background-color: #f7fff7;
+}
+.red{
+    background-color: #fff7f7;
+}
+.yellow{
+  background-color: #fffdf7;
+}
+.redBox{
+  border: 2px solid black;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  background-color: #f9c5bd;
+    display: inline-block;
+}
+.yellowBox{
+  border: 2px solid black;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  background-color: #f9f8b1;
+    display: inline-block;
+}
+.greenBox{
+  border: 2px solid black;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+    display: inline-block;
+  background-color: #d6edbd;
 }
 #newAnimalForm{
   position: fixed;
@@ -13,6 +61,23 @@
   bottom: 10px;
   background-color: silver;
   padding: 10px;
+}
+.panel-body{
+  font-size: 1.5em;
+}
+.jumbotron{
+  background-image: url( "../img/header.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.jumbotron h1{
+  padding: 100px;
+  color: white;
+  text-shadow: 2px 2px 5px #111111;
+  font-size: 9em;
+  letter-spacing: 10px;
 }
 
 
@@ -23,4 +88,20 @@
   bottom: 10px;
   background-color: silver;
   padding: 10px;
+}
+
+.animalImageWrapper{
+  text-align: center;
+  margin: 30px;
+  margin-top: 10px;
+}
+
+.animalImage{
+  height: 300px;
+ border-radius: 25px;
+
+}
+.panel-heading{
+  text-align: center;
+  font-size: 3em;
 }
