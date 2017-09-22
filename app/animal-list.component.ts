@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {Animal} from './animal';
+import { Animal } from './animal';
+import { AgePipe } from './age-pipe.pipe';
 
 @Component({
   selector: 'animal-list',
@@ -7,7 +8,13 @@ import {Animal} from './animal';
 
   <button (click) = "showNewAnimalForm()">Add new Animal</button>
 
-  <div class="panel panel-info" *ngFor="let animal of animalList">
+  <select (change)="onAgeChange($event.target.value)">
+    <option value="allAges" selected="selected">All Ages</option>
+    <option value="young">Young</option>
+    <option value="mature">Mature</option>
+  </select>
+
+  <div class="panel panel-info" *ngFor="let animal of animalList | agePipe:filterByAge">
     <div class="panel-heading">{{animal.name}}</div>
     <div class="panel-body">
 
@@ -45,12 +52,23 @@ export class AnimalListComponent {
   @Input() animalList: Animal[];
   @Output() showNewAnimalFormSender = new EventEmitter();
   @Output() editAnimalSender = new EventEmitter();
-  showNewAnimalForm(){
 
+  filterByAge : string = "allAges";
+
+  onAgeChange(optionFromMenu){
+    this.filterByAge = optionFromMenu;
+  }
+
+  showNewAnimalForm(){
     this.showNewAnimalFormSender.emit();
   }
 
   editAnimal(animal : Animal){
     this.editAnimalSender.emit(animal);
   }
+
+  onPintsRemainingChange(optionFromMenu) {
+    this.filterByAge = optionFromMenu;
+  }
+
 }
