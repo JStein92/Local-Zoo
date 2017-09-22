@@ -21,6 +21,14 @@ text-align: center;
 
   margin-left: 35%;
 }
+#selects{
+  font-size: 1.3em;
+}
+#addAnimalBtn{
+  float: right;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
 .green{
     background-color: #f7fff7;
 }

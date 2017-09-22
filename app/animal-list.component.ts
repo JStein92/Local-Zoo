@@ -17,7 +17,6 @@ import { AgePipe } from './age-pipe.pipe';
         </div>
         <div class = 'col-md-4'>
           <div class = "yellowBox">
-
           </div>
            Omnivore
         </div>
@@ -31,15 +30,26 @@ import { AgePipe } from './age-pipe.pipe';
   </div>
 
 
-  <button (click) = "showNewAnimalForm()">Add new Animal</button>
+<div><button (click) = "showNewAnimalForm()"  id="addAnimalBtn" class="btn btn-info">Add new Animal</button></div>
 
+<div id="selects">
   <select (change)="onAgeChange($event.target.value)">
     <option value="allAges" selected="selected">All Ages</option>
     <option value="young">Young</option>
     <option value="mature">Mature</option>
   </select>
 
-  <div *ngFor="let animal of animalList | agePipe:filterByAge" [class]="getPanelColor(animal)">
+  <select (change)="onDietChange($event.target.value)">
+    <option value="allDiets" selected="selected">All Diets</option>
+    <option value="Herbivore">Herbivore</option>
+    <option value="Carnivore">Carnivore</option>
+    <option value="Omnivore">Omnivore</option>
+  </select>
+  </div>
+
+  <br>
+
+  <div *ngFor="let animal of animalList | agePipe:filterByAge | dietPipe:filterByDiet" [class]="getPanelColor(animal)">
     <div class="panel-heading">{{animal.name}}</div>
     <div [class]="getPanelBodyColor(animal)">
 
@@ -83,9 +93,14 @@ export class AnimalListComponent {
   @Output() editAnimalSender = new EventEmitter();
 
   filterByAge : string = "allAges";
+  filterByDiet : string = "allDiets";
 
   onAgeChange(optionFromMenu){
     this.filterByAge = optionFromMenu;
+  }
+
+  onDietChange(optionFromMenu){
+    this.filterByDiet = optionFromMenu;
   }
 
   showNewAnimalForm(){
